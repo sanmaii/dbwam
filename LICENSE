@@ -1,6 +1,10 @@
 BSD 3-Clause License
 
+<<<<<<< HEAD
 Copyright (c) 2025, sanmaii
+=======
+Copyright (c) 2025, samuel
+>>>>>>> 1648fc65fa52b8f7800e5e59c89624c4f52e9a32
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
