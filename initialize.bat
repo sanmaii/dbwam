@@ -44,9 +44,8 @@ echo. Updating configs...
 move ".env.tmp" ".env"
 
 setlocal enabledelayedexpansion
-echo (!user_model! > "model.txt.tmp"
+echo !user_model! > "model.txt.tmp"
 move /Y "model.txt.tmp" "model.txt"
-)
 
 echo.
 echo Configs updated suscessfully.
