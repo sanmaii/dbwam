@@ -238,6 +238,7 @@ async def query_ollama(prompt, context, message=None):
     except Exception as e:
         print(f"Error occured when connecting to Ollama: {e}")
         return f"Cannot connect to AI service：{str(e)}"
+
 @bot.event
 async def on_ready():
     """Send the messages when the bot is activated."""
@@ -247,11 +248,12 @@ async def on_ready():
     print(f'Timeout: {CONFIG["timeout"]} seconds')
     print(f'Streaming mode: {"Enabled" if CONFIG["stream_enabled"] else "Disabled"}')
     
-    test_response = await query_ollama("Connection test", [], None)
-    if "Sorry" not in test_response and "error" not in test_response:
+    test_response = await query_ollama("測試連接", [], None)
+    if "抱歉" not in test_response and "錯誤" not in test_response:
         print("✓ Ollama connected")
     else:
         print("✗ Cannot connect to Ollama. Please check if Ollama is running")
+
 @bot.event
 async def on_message(message):
     """Message events"""
@@ -332,6 +334,7 @@ async def on_message(message):
     
     # Other commands
     await bot.process_commands(message)
+
 @bot.command(name='ping')
 async def ping(ctx):
     """Ping Pong"""
@@ -423,6 +426,7 @@ async def on_command_error(ctx, error):
     else:
         print(f'Error: {error}')
         await ctx.send(f"❌ Error occured: {str(error)}")
+
 def main():
     """Main function"""
     token = os.getenv('DISCORD_TOKEN')
@@ -445,5 +449,6 @@ def main():
         print("Error! Invalid Discord Token!")
     except Exception as e:
         print(f"Error occured: {e}")
+
 if __name__ == "__main__":
     main()

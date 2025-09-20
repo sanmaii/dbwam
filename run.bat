@@ -1,17 +1,11 @@
 @echo off
 chcp 65001 >nul
 
-setlocal enabledelayedexpansion
-
-set "model_name="
-
-for /f "usebackq delims=" %%i in ("model.txt") do (
-    set "content=!content!%%i^&echo."
-)
-
-echo Using %model_name%.
+set /p model_name=<model.txt
 
 start "" /b ollama run %model_name%
+
+timeout /t 5 /nobreak >nul
 
 echo Set WshShell = WScript.CreateObject("WScript.Shell") > sendkeys.vbs
 echo WshShell.AppActivate "ollama run" >> sendkeys.vbs
